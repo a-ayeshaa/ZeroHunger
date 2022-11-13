@@ -1,0 +1,80 @@
+﻿
+@{
+    ViewBag.Title = "CheckRequest";
+    Layout = "~/Views/Shared/empview.cshtml";
+}
+@model List<ZeroHunger_Mid_.DB.Request>
+
+<h3 class="alert-info">
+    @TempData["msg"]
+</h3>
+<h3>Check Requests for @ViewBag.name</h3>
+
+<form action="" method="post">
+    <div class="form-group">
+        <label>Sort by:</label>
+        <input type="hidden" name="id" value="@ViewBag.id" />
+        <select class="form-control" name="sort" onchange="this.form.submit();">
+            <option value="" disabled selected>Status</option>
+            <option value="All">All</option>
+            <option value="Pending">Pending</option>
+            <option value="Expired">Expired</option>
+            <option value="Accepted">Accepted</option>
+            <option value="Declined">Declined</option>
+            <option value="Completed">Completed</option>
+        </select>
+    </div>
+
+</form>
+<br />
+@if (Model.Count != 0)
+{
+    <table class="table table-bordered">
+        <tr>
+            <th>Restaurant Name</th>
+            <th>Status</th>
+            <th>Action</th>
+            <th>Details</th>
+        </tr>
+        @foreach (var r in Model)
+        {
+            <tr>
+                <td>@r.Restaurant.name</td>
+
+
+                @if (r.status.Equals("Pending"))
+                {
+                    <td>
+                        <a href="/Employee/AcceptReq/@r.id" class="btn-link">ACCEPT</a> ||
+                        <a href="/Employee/DeclineReq/@r.id" class="btn-link">DECLINE</a>
+                    </td>
+
+                }
+                else
+                {
+                    <td>@r.status</td>
+                }
+                @if (r.status.Equals("Accepted"))
+                {
+                    <td>
+                        <a href="/Employee/CompleteReq/@r.id" class="btn btn-info">Complete</a>
+                    </td>
+                }
+                else
+                {
+                    <td></td>
+                }
+                <td>
+                    <a href="/NGO/Details/@r.id" class="btn btn-info">DETAILS</a>
+                </td>
+            </tr>
+        }
+    </table>
+}
+else
+{
+    <h2>
+        No Requests Assigned! <br />
+        Wait for your NGO to assign you requests!
+    </h2>
+}

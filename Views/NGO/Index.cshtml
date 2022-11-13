@@ -1,0 +1,82 @@
+﻿
+@{
+    ViewBag.Title = "Requests";
+    Layout = "~/Views/Shared/ngolayout.cshtml";
+}
+@model List<ZeroHunger_Mid_.DB.Request>
+<h3>Requests</h3>
+<h3 class="alert-info">
+    @TempData["msg"]
+</h3>
+<form action="" method="post">
+    <div class="form-group">
+        <label>Sort by:</label>
+        <select class="form-control" name="sort" onchange="this.form.submit();">
+            <option value="" disabled selected>Status</option>
+            <option value="All">All</option>
+            <option value="Pending">Pending</option>
+            <option value="Expired">Expired</option>
+            <option value="Accepted">Accepted</option>
+            <option value="Declined">Declined</option>
+            <option value="Completed">Completed</option>
+        </select>
+    </div>
+
+</form>
+<br />
+@if (Model.Count != 0)
+{
+
+    <table class="table table-bordered">
+        <tr>
+            <th>Restaurant Name</th>
+            <th>Expired Time</th>
+            <th>Preservation Time</th>
+            <th>Time Remaining</th>
+            <th>Status</th>
+            <th>Employee Assigned</th>
+            <th>Details</th>
+        </tr>
+        @foreach (var req in Model)
+        {
+            <tr>
+                <td>@req.Restaurant.name</td>
+                <td>@req.expiredAt.ToString("MMM dd, yyyy hh:mm tt")</td>
+                <td>@(((int)(req.expiredAt - req.requestAt).TotalHours)) hrs</td>
+
+                @if (!req.status.Equals("Expired"))
+                {
+                    <td>
+                        <div>
+                            @(((int)(req.expiredAt - DateTime.Now).TotalHours)) hrs
+                        </div>
+                    </td>
+                    <td>
+                        @req.status
+                    </td>
+                    <td>
+                        @if (req.employee_id != null)
+                        {
+                            @req.Employee.name
+                        }
+                        else
+                        {
+                            <a href="/NGO/AssignEmployee/@req.id" class="btn btn-info">ASSIGN</a>
+                        }
+                    </td>
+
+                }
+                else
+                {
+                    <td colspan="3">EXPIRED</td>
+
+                }
+                <td>
+                    <a href="/NGO/Details/@req.id" class="btn btn-info">DETAILS</a>
+                </td>
+            </tr>
+        }
+    </table>
+
+
+}

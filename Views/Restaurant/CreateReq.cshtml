@@ -1,0 +1,27 @@
+﻿
+@{
+    ViewBag.Title = "CreateReq";
+    Layout = "~/Views/Shared/reslayout.cshtml";
+}
+@model ZeroHunger_Mid_.DB.Restaurant
+<h3>Create Request</h3>
+
+<form action="" method="post">
+    <input type="text" class="form-control" name="restaurant_name" placeholder="@Model.name" />
+    <input type="hidden" name="restaurant_id" value="@Model.id" /> <br />
+    <label for="expiredAt" class="form-group">Till when can the items be preserved?</label>
+    <input type="datetime-local" class="form-control" name="expiredAt" placeholder="Enter Expiry Date" />
+    <label>Enter items</label> <br />
+    Item 1:
+    <input type="text" class="form-control" name="items[]" placeholder="NAME" />
+    <input type="number" min="1" class="form-control" name="quantity[]" placeholder="QUANTITY" />
+    Item 2:
+    <input type="text" class="form-control" name="items[]" placeholder="NAME" />
+    <input type="number" min="1" class="form-control" name="quantity[]" placeholder="QUANTITY" />
+    Item 3:
+    <input type="text" class="form-control" name="items[]" placeholder="NAME" />
+    <input type="number" min="1" class="form-control" name="quantity[]" placeholder="QUANTITY" />
+    <br />
+    <input type="submit" class="form-control" value="SUBMIT" />
+
+</form>

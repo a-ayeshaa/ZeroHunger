@@ -1,0 +1,30 @@
+﻿
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>@ViewBag.Title</title>
+    @Styles.Render("~/Content/css")
+
+</head>
+<body class="container">
+    <a href="/NGO/Index" class="btn btn-info">NGO</a>
+    <a href="/NGO/ShowEmployee" class="btn btn-info">EMPLOYEE</a>
+    <a href="/Restaurant/Index" class="btn btn-info">RESTAURANT</a>
+
+    <br />
+    <br />
+    <a href="/Restaurant/AddRestaurant" class="btn btn-info">ADD RESTAURANT</a>
+    <div class="container body-content">
+        @RenderBody()
+    </div>
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
+    @RenderSection("scripts", required: false)
+</body>
+</html>

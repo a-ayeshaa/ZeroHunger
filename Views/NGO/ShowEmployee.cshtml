@@ -1,0 +1,24 @@
+﻿
+@{
+    ViewBag.Title = "ShowEmployee";
+    Layout = "~/Views/Shared/ngolayout.cshtml";
+}
+@model List<ZeroHunger_Mid_.DB.Employee>
+<h3>Show Employee</h3>
+
+<table class="table table-bordered">
+    <tr>
+        <th>ID</th>
+        <th>Name</th>
+        <th>Assigned Requests</th>
+    </tr>
+    @foreach(var emp in Model)
+            {
+                <tr>
+                    <td>@emp.id</td>
+                    <td>@emp.name</td>
+                    <td>@emp.Requests.Count</td>
+                    <td><a href="/Employee/CheckRequest/@emp.id" class="btn btn-info">CHECK REQUESTS</a></td>
+                </tr>
+            }
+</table>

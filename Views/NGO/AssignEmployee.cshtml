@@ -1,0 +1,24 @@
+﻿
+@{
+    ViewBag.Title = "AssignEmployee";
+    Layout = "~/Views/Shared/ngolayout.cshtml";
+}
+@model ZeroHunger_Mid_.DB.Request
+<h3>Assign Employee</h3>
+
+<form action="" method="post">
+    <input class="form-control" type="text" name="restaurant_name" placeholder="@Model.Restaurant.name" readonly />
+    <input type="hidden" name="id" value="@Model.id" />
+    <select class="form-control" name="employee_id">
+        <option value="" disabled selected>SELECT EMPLOYEE</option>
+
+            @foreach (var employee in ViewBag.employees)
+            {
+                <option value="@employee.id">@employee.name</option>
+            }
+
+    </select>
+    <br />
+    <input type="submit" class="form-control" value="ASSIGN EMPLOYEE" />
+</form>
+

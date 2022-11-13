@@ -1,0 +1,25 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/reslayout.cshtml";
+}
+@model List<ZeroHunger_Mid_.DB.Restaurant>
+<h3>Restaurant List</h3>
+<table class="table table-bordered">
+    <tr>
+        <th>Name</th>
+        <th>Requests</th>
+        <th>Create New Request</th>
+    </tr>
+    @foreach(var r in Model)
+            {
+                <tr>
+                    <td>@r.name</td>
+                    <td>@r.Requests.Count</td>
+                    <td>
+                        <a href="/Restaurant/CreateReq/@r.id" class="btn btn-info">CREATE NEW REQUEST</a>
+                    </td>
+                </tr>
+            }
+</table>
+

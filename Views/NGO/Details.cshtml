@@ -1,0 +1,28 @@
+﻿
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/ngolayout.cshtml";
+}
+@model List<ZeroHunger_Mid_.DB.Item>
+
+<h2>Details</h2>
+
+<label class="label-info" for="res_name">Requested By</label>
+<input class="form-control" name="res_name" value="@Model[0].Request.Restaurant.name" readonly />
+<br />
+<label class="label-info" for="status">Status</label>
+<input class="form-control" name="res_name" value="@Model[0].Request.status" readonly />
+<br />
+<label class="label-info" for="expiredAt">Expired At</label>
+<input class="form-control" name="expiredAt" value="@Model[0].Request.expiredAt" readonly />
+<br />
+<label class="label-info">Items:</label>
+<ul>
+    @foreach (var i in Model)
+    {
+        <li>@i.name x @i.quantity</li>    
+    }
+</ul>
+
+
+

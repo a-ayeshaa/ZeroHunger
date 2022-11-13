@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="b7bcc01139c94e918884119d1bed1ba7" Name="Diagram1" ZoomLevel="74">
+        <EntityTypeShape EntityType="ZeroHunger_dbModel.Employee" Width="1.5" PointX="0.75" PointY="1.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="ZeroHunger_dbModel.Request" Width="1.5" PointX="3" PointY="1" IsExpanded="true" />
+        <EntityTypeShape EntityType="ZeroHunger_dbModel.Restaurant" Width="1.5" PointX="2.875" PointY="4.5" IsExpanded="true" />
+        <AssociationConnector Association="ZeroHunger_dbModel.FK_Requests_Employees" ManuallyRouted="false" />
+        <AssociationConnector Association="ZeroHunger_dbModel.FK_Requests_Restaurants" ManuallyRouted="false" />
+        <EntityTypeShape EntityType="ZeroHunger_dbModel.Item" Width="1.5" PointX="6.375" PointY="1.875" />
+        <AssociationConnector Association="ZeroHunger_dbModel.FK_Items_Requests" ManuallyRouted="false" >
+        </AssociationConnector>
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>
