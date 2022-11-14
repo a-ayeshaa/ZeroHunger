@@ -78,7 +78,7 @@ namespace ZeroHunger_Mid_.Controllers
             var db = new ZeroHunger_dbEntities1();
             db.Employees.Add(e);
             db.SaveChanges();
-            return RedirectToAction("Index");
+            return RedirectToAction("ShowEmployee");
         }
 
         public ActionResult ShowEmployee()

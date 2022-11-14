@@ -4,22 +4,32 @@
     Layout = "~/Views/Shared/reslayout.cshtml";
 }
 @model List<ZeroHunger_Mid_.DB.Restaurant>
+
+@if (TempData["msg"]!=null)
+{
+    <div class="alert alert-danger"> @TempData["msg"] </div>
+
+}
 <h3>Restaurant List</h3>
 <table class="table table-bordered">
     <tr>
         <th>Name</th>
         <th>Requests</th>
         <th>Create New Request</th>
+        <th>All Requests</th>
     </tr>
-    @foreach(var r in Model)
-            {
-                <tr>
-                    <td>@r.name</td>
-                    <td>@r.Requests.Count</td>
-                    <td>
-                        <a href="/Restaurant/CreateReq/@r.id" class="btn btn-info">CREATE NEW REQUEST</a>
-                    </td>
-                </tr>
-            }
+    @foreach (var r in Model)
+    {
+        <tr>
+            <td>@r.name</td>
+            <td>@r.Requests.Count</td>
+            <td>
+                <a href="/Restaurant/CreateReq/@r.id" class="btn btn-info">CREATE NEW REQUEST</a>
+            </td>
+            <td>
+                <a href="/Restaurant/CheckRequests/@r.id" class="btn btn-info">CHECK REQUESTS</a>
+            </td>
+        </tr>
+    }
 </table>
 

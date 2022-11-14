@@ -227,6 +227,7 @@
     <Content Include="Views\Restaurant\CreateReq.cshtml" />
     <Content Include="Views\NGO\Details.cshtml" />
     <Content Include="Views\Restaurant\AddRestaurant.cshtml" />
+    <Content Include="Views\Restaurant\CheckRequests.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

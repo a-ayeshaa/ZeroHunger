@@ -1,0 +1,62 @@
+﻿
+@{
+    ViewBag.Title = "CheckRequests";
+    Layout = "~/Views/Shared/reslayout.cshtml";
+}
+@model List<ZeroHunger_Mid_.DB.Request>
+
+<h3>Check Requests for @ViewBag.name</h3>
+
+<form action="" method="post">
+    <div class="form-group">
+        <label>Sort by:</label>
+        <input type="hidden" name="id" value="@ViewBag.id" />
+        <select class="form-control" name="sort" onchange="this.form.submit();">
+            <option value="" disabled selected>Status</option>
+            <option value="All">All</option>
+            <option value="Pending">Pending</option>
+            <option value="Expired">Expired</option>
+            <option value="Accepted">Accepted</option>
+            <option value="Declined">Declined</option>
+            <option value="Completed">Completed</option>
+        </select>
+    </div>
+
+</form>
+<br />
+@if (Model.Count != 0)
+{
+    <table class="table table-bordered">
+        <tr>
+            <th>Request ID</th>
+            <th>Status</th>
+            <th>Action</th>
+            <th>Details</th>
+        </tr>
+        @foreach (var r in Model)
+        {
+            <tr>
+                <td>@r.id</td>
+                <td>@r.status</td>
+                <td>
+                    @if (r.status.Equals("Pending"))
+                    {
+                        <a href="/Restaurant/DeleteReq/@r.id" class="btn btn-info">DELETE</a>
+                    }
+                </td>
+                <td>
+                    <a href="/NGO/Details/@r.id" class="btn btn-info">DETAILS</a>
+                </td>
+            </tr>
+        }
+    </table>
+}
+else
+{
+    <h3>
+        No Requests Found! <br />
+    </h3>
+}
+<h3 class="alert-info">
+    @TempData["msg"]
+</h3>
